@@ -8,7 +8,7 @@ import xarray as xr
 from sklearn.neighbors import NearestNeighbors
 from slicedimage.io import resolve_path_or_url
 
-from starfish.intensity_table import IntensityTable
+from starfish.intensity_table.intensity_table import IntensityTable
 from starfish.types import Features, Indices, Number
 
 
