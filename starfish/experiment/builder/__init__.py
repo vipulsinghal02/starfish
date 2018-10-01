@@ -103,7 +103,7 @@ def build_image(
                         image.shape,
                         extras=image.extras,
                     )
-                    tile.numpy_array = image.tile_data()
+                    tile.set_numpy_array_future(image.tile_data)
                     fov_images.add_tile(tile)
         collection.add_partition("fov_{:03}".format(fov_ix), fov_images)
     return collection
@@ -175,6 +175,7 @@ def write_experiment_json(
         partition_path_generator=_fov_path_generator,
         tile_opener=_tile_opener,
         tile_format=ImageFormat.TIFF,
+        destructive=True,
     )
     experiment_doc['primary_images'] = "primary_image.json"
 
@@ -194,6 +195,7 @@ def write_experiment_json(
             partition_path_generator=_fov_path_generator,
             tile_opener=_tile_opener,
             tile_format=ImageFormat.TIFF,
+            destructive=True,
         )
         experiment_doc['auxiliary_images'][aux_name] = "{}.json".format(aux_name)
 
